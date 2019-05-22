@@ -2,7 +2,19 @@ import csv
 
 # 그래프를 그리는데 필요한 matplotlib
 # pip install matplotlib
+
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# 한글 폰트 적용
+# https://programmers.co.kr/learn/courses/21/lessons/950
+nanum_font_list = [(f.name, f.fname) for f in fm.fontManager.ttflist if 'Nanum' in f.name]
+
+if len(nanum_font_list) > 0:
+    plt.rcParams["font.family"] = nanum_font_list[0][0]
+else:
+    plt.rcParams["font.family"] = "Gulim"
+
 
 # http://localdata.kr/devcenter/dataDown.do?menuNo=20001
 
@@ -29,9 +41,6 @@ for line in csv_reader:
         theater_cnt[place] += 1
     else:
         theater_cnt[place] = 1
-
-# 한글 폰트 적용
-plt.rcParams["font.family"] = 'NanumBarunGothic'
 
 # 그래프를 그리기 위한 데이터 수집용 리스트
 x_title = []  # 지역명 저장

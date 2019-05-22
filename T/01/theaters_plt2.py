@@ -2,6 +2,16 @@ import csv
 
 import matplotlib as mpl  # 기본 설정 만지는 용도
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# 한글 폰트 적용
+# https://programmers.co.kr/learn/courses/21/lessons/950
+nanum_font_list = [(f.name, f.fname) for f in fm.fontManager.ttflist if 'Nanum' in f.name]
+
+if len(nanum_font_list) > 0:
+    plt.rcParams["font.family"] = nanum_font_list[0][0]
+else:
+    plt.rcParams["font.family"] = "Gulim"
 
 
 # 지역명을 정돈하기 위한 함수
@@ -25,9 +35,6 @@ csv_reader = csv.reader(f)
 
 # 그래프에서 마이너스 폰트 깨질 경우 대비
 mpl.rcParams['axes.unicode_minus'] = False
-
-# 한글 폰트 적용
-plt.rcParams["font.family"] = 'NanumBarunGothic'
 
 # 두개의 그래프를 그리기 위한 subplot 시작
 fig = plt.figure()

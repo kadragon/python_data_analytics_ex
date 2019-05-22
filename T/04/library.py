@@ -85,7 +85,7 @@ ax1.title.set_text('전국 도서관 수')
 ax1.set_ylabel('도서관 수')
 
 # 전국 인구 데이터 2017년도 기준
-m = open('../01/M_2017.csv', 'r', encoding='euc-kr')
+m = open('M_2017.csv', 'r', encoding='euc-kr')
 m_csv = csv.reader(m)
 
 nation_count = 0  # 전국 인구수 저장
