@@ -54,5 +54,5 @@ for key in list(theater_cnt.keys()):
 
 # 막대 그래프 그리기
 plt.bar(x_title, y_value, width=0.5)
-plt.legend()
+# plt.legend()
 plt.show()

@@ -42,7 +42,7 @@ fig.set_size_inches(19.20, 10.80)
 ax1 = fig.add_subplot(2, 1, 1)  # (2, 1) 크기의 공간에 첫번째 그래프
 ax2 = fig.add_subplot(2, 1, 2)  # (2, 1) 크기의 공간에 두번째 그래프
 
-# dictionary 선언, 사전형
+# dictioAnary 선언, 사전형
 theater_cnt = {}
 
 # 한줄씩 읽어서 처리해보자.
@@ -104,7 +104,9 @@ ax2.bar(x_conv_title, y_conv_data, width=0.5)
 ax2.title.set_text('상영관 1개당 인구수')
 ax2.set_ylabel('인구수')
 
+
 plt.show()
+
 
 # 열었던 파일 제거
 f.close()

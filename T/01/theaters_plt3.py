@@ -14,19 +14,6 @@ else:
     plt.rcParams["font.family"] = "Gulim"
 
 
-# 지역명을 정돈하기 위한 함수
-def region_name_short(region):
-    region = region.replace('특별', '')
-    region = region.replace('자치', '')
-    region = region.replace('광역', '')
-    region = region.replace('시', '')
-    region = region.replace('도', '')
-    region = region.replace('청', '')
-    region = region.replace('라', '')
-    region = region.replace('상', '')
-    return region
-
-
 # http://localdata.kr/devcenter/dataDown.do?menuNo=20001
 
 # csv 파일 열기, 'r' 읽기 모드, 인코딩 방식은 utf-8
@@ -48,6 +35,8 @@ for data in csv_reader:
         continue
 
     # 좌표 데이터 이상으로 ']' 가 입력 된경우 제거
+    # 197428.923002637, 452041.177877529
+    # 중부 TM 좌표
     data[27] = data[27].replace(']', '')
 
     # 기준점을 0으로 맞추고, 단위를 줄임
@@ -70,13 +59,13 @@ for _ in range(y_max + 1):
     tm.append(tmp)
 
 for x, y in tm_list:
-    tm[y_max - y][x] += 1
+    tm[y_max - y][x] += 5
 
 # 그래프에서 마이너스 폰트 깨질 경우 대비
 mpl.rcParams['axes.unicode_minus'] = False
 
-plt.figure(figsize=(7.5, 14), dpi=150)
-plt.imshow(tm, cmap='hot', interpolation='nearest')
+plt.figure(figsize=(7.5, 14), dpi=300)
+plt.imshow(tm, cmap='coolwarm', interpolation='nearest')
 plt.title('전국 상영관 위치')
 plt.axis('off')
 plt.show()

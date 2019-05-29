@@ -8,7 +8,6 @@ csv_reader = csv.reader(f)
 
 # dictionary 선언, 사전형
 theater_cnt = {}
-cnt = 0
 
 # 한줄씩 읽어서 처리해보자.
 for line in csv_reader:

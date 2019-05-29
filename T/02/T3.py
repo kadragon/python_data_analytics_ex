@@ -31,14 +31,14 @@ for year in [1987, 1990, 2000, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2
 
         # 월별로 데이터를 수집하기 위해서 내부 배열 선언
         if data[target] == 0:
-            data[target] = [0, 0]
+            data[target] = [[0] * 13, [0] * 13]
 
         month = int(i[0][4:6])
 
         # 미세먼지 데이터가 있을때, 이를 각 달별로 저장하고 평균내기 위한 카운트 증가
         if i[6] != '':
-            data[target][0] += int(i[6])
-            data[target][1] += 1
+            data[target][0][month] += int(i[6])
+            data[target][1][month] += 1
 
     # 연 파일 닫기
     f.close()
@@ -54,16 +54,25 @@ plt_pm10Data = []
 
 # 각 월별 리스트를 추가
 # append 는 list 에 값을 추가 할 수 있다.
-# for i in range(0, 13):
-#     plt_pm10Data.append([])
+for i in range(0, 13):
+    plt_pm10Data.append([])
 
 # 평균치를 구해서 위에 월별 리스트에 추가함.
 for year in range(1995 - 1987, 2019 - 1987):
-    avg_pm = data[year][0] / data[year][1]
-    plt_pm10Data.append(avg_pm)
+    for month in range(1, 13):
+        avg_pm = data[year][0][month] / data[year][1][month]
+
+        plt_pm10Data[month].append(avg_pm)
 
 # 각 월별 그래프를 추가
-plt.plot(plt_titleData, plt_pm10Data)
+for month in range(1, 13):
+    plt.plot(plt_titleData, plt_pm10Data[month])
+
+
+# 범례
+plt.legend([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
 
 # 그래프 보이기
 plt.show()
+
