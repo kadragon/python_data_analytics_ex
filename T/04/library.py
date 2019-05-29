@@ -21,6 +21,7 @@ if len(nanum_font_list) > 0:
     plt.rcParams["font.family"] = nanum_font_list[0][0]
 else:
     print("나눔 폰트가 설치되어 있지 않습니다. 한글이 정상적으로 출력되지 않을 수 있습니다.")
+    plt.rcParams['font.family'] = 'Gulim'
 
 
 # 그래프를 그리기 위한 설정

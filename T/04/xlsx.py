@@ -17,9 +17,13 @@ wb = openpyxl.load_workbook('전국도서관표준데이터.xlsx')
 # 활성 sheet 선택하기
 ws = wb.active
 
+i = 0
 
 for row in ws.rows:
-    for k in row:
-        print(k.value, end=',')
+    if i == 0:
+        for k in row:
+            print(k.value, end=',')
 
-    print()
+        i += 1
+
+    print(row[1].value)
