@@ -1,4 +1,10 @@
-# xlsx 를 읽기 위한 코드,
+# 전국 주민등록 인구 및 세대 현황
+# http://27.101.213.4/
+
+# 전국도서관표준데이터
+# https://www.data.go.kr/dataset/15013109/standard.do
+
+# xlsx 를 읽기 위한 코드
 import openpyxl
 
 
