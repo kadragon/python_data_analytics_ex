@@ -24,18 +24,13 @@ def get_movies_info() -> None:
     html = get_html('http://www.cgv.co.kr/movies/')
     soup = bs4.BeautifulSoup(html, 'html.parser')
 
-    movie_list = soup.select('li div.box-contents')
+    movie_list = soup.select('div.sect-movie-chart li div.box-contents')
 
     i = 1
 
     for movie in movie_list:
-        # print(movie)
-        # 각각 찾았던 영화 내에 정보를 추출하기 위해서 개별 접근용 parser
-        sub_soup = bs4.BeautifulSoup(str(movie), 'html.parser')
-        movie_name = sub_soup.find('a').text.strip()
-        movie_ticket = sub_soup.select('div.score strong span')
-
-        movie_ticket = movie_ticket[0].text if len(movie_ticket) == 1 else '0%'
+        movie_name = movie.find('a').text.strip()
+        movie_ticket = movie.select('div.score strong span')[0].text
 
         print("[%02d] %s %s" % (i, movie_name, movie_ticket))
         i += 1
