@@ -25,7 +25,7 @@ today = datetime.today().year*10000 + datetime.today().month*100 + datetime.toda
 print(today)
 
 
-serviceKey = ""
+serviceKey = "jjg9PodXGlwYYrfmH0VNL%2BmmUjU4h%2BNp4RxysfJihzOqGGN3mucbkB96AAFh0bUkAldnsSv6fWJXBarx8n9otw%3D%3D"
 
 numOfRows = 1000
 pageNo = 1
